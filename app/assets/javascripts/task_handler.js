@@ -4,11 +4,14 @@ var task_number = 1;
 
 $(document).ready(function(){
   $(document).on('click', '.table_add_task', function(){
-    if (task_number != 1){
-      getDateDifference(task_number);
-    }else{
-      task_number++;
-      addNewTask(task_number);
+    //console.log($('#start1')[0].value);
+    if (($('#start1')[0].value)!=""){
+      if (task_number != 1){
+        getDateDifference(task_number);
+      }else{
+        task_number++;
+        addNewTask(task_number);
+      }
     }
   });
 });
@@ -27,27 +30,29 @@ function addNewTask(task_number){
 );
 }
 
-
-
 function getDateDifference(row_number){
   //calculates the difference between when a task begins and when it end.
   if (row_number != 1){
     var oneDay = 24*60*60*1000;
     var start_date = $("#start"+row_number)[0].value;
     var finish_date = $("#finish"+row_number)[0].value;
-    start_date = new Date(start_date);
-    finish_date = new Date(finish_date);
-    var diffDays =
-    Math.round((finish_date.getTime() - start_date.getTime())/(oneDay));
-    var startDiff = differenceFromStart(row_number);
-    if (diffDays < 0){
-      window.alert("TASKS MUST FINISH AFTER THE TASK'S START DATE!");
-    }else if (startDiff < 0){
-      window.alert("TASKS MUST FINISH AFTER THE PROJECT START DATE!");
+    if ((start_date == "")||(finish_date == "")){
+      window.alert("PLEASE ENTER A START AND FINISH DATE!")
     }else{
-      taskAsBar(diffDays, row_number);
-      task_number++;
-      addNewTask(task_number);
+      start_date = new Date(start_date);
+      finish_date = new Date(finish_date);
+      var diffDays =
+      Math.round((finish_date.getTime() - start_date.getTime())/(oneDay));
+      var startDiff = differenceFromStart(row_number);
+      if (diffDays < 0){
+        window.alert("TASKS MUST FINISH AFTER THE TASK'S START DATE!");
+      }else if (startDiff < 0){
+        window.alert("TASKS MUST FINISH AFTER THE PROJECT START DATE!");
+      }else{
+        taskAsBar(diffDays, row_number);
+        task_number++;
+        addNewTask(task_number);
+      }
     }
   }
 }
@@ -92,6 +97,9 @@ function taskAsBar(dateDiff, row_number){
   newText.setAttributeNS(null, 'font-size', "13px");
   newText.setAttributeNS(null, 'text-anchor', "middle");
   newText.setAttributeNS(null, 'alignment-baseline', "middle");
+  if (dateDiff == 0){
+    newText.setAttributeNS(null, 'display', 'none');
+  }
   var textNode = document.createTextNode(''+dateDiff+' days');
   newText.appendChild(textNode);
   document.getElementById('gantt_svg').appendChild(newText);
@@ -109,6 +117,7 @@ function remove_task(task_num){
   var parent = task.parentNode;
   parent.removeChild(task);
   task_number--;
+  console.log(task_number);
 }
 
 function reduceTaskNumber(task_num){
@@ -120,6 +129,8 @@ function reduceTaskNumber(task_num){
     document.getElementById("task_table").rows[i].id = "task"+(i-1);
     var task_attr = document.getElementById("task_table").rows[i].cells;
     task_attr[0].innerHTML = (i - 1);
+    document.getElementById("start"+i).id = "start"+(i - 1);
+    document.getElementById("finish"+i).id = "finish"+(i - 1);
     task_attr[6].innerHTML = "<button type='button' class='table_remove_task' "+
     "onclick='remove_task("+(i - 1)+")'>-</button>"
   }
@@ -156,9 +167,5 @@ function shiftUpBars(task_num){
     text_yaxis = (text_yaxis - 34);
     text.setAttribute('y', text_yaxis);
     text.setAttribute('id', 'bar_text'+(i-1));
-
-
-
   }
-
 }
