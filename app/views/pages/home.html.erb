@@ -1,0 +1,33 @@
+<div id="gantt_area">
+  <h1>Gantt Chart</h1>
+
+  <!-- Area for table inserts-->
+  <div id="table_area">
+
+    <table id="task_table">
+      <tr>
+        <th>Task ID</th>
+        <th>Task Name</th>
+        <th>Task Start</th>
+        <th>Task Finish</th>
+        <th>Prerequistes</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Start</td>
+        <td><input type='date' id="start1"></td>
+        <td></td>
+        <td></td>
+        <td><button type='button' class='table_add_task'>+</button></td>
+      </tr>
+    </table>
+
+  </div>
+  <!-- Area for grid view -->
+  <div id="grid_area">
+    <svg id="gantt_svg">
+    </svg>
+
+  </div>
+
+</div>
