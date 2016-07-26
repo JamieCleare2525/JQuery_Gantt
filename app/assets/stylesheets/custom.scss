@@ -23,8 +23,11 @@ input{
 }
 
 #gantt_svg{
-  width: 400px;
+  position:relative;
+  width: 600px;
   height:100px;
+  display: block;
+  overflow-y: auto;
   background-color: #cccccc;
   margin-top: 20px;
 }
