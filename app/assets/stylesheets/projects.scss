@@ -22,3 +22,20 @@
     border-bottom: solid #ff0000;
   }
 }
+
+#create_tasks{
+  float:left;
+  width: 200px;
+  text-align: center;
+}
+
+#show_tasks{
+  float: left;
+  width: 700px;
+  text-align: center;
+  background-color: #cccccc;
+}
+
+#gantt_area{
+  float: left;
+}
