@@ -1,9 +1,33 @@
 <% if !current_user %>
-  <h1> Gantt App </h1>
+<h1> Gantt App </h1>
 <% else %>
-  <div id="project_controls">
-    <%= link_to "Gantt Page", pages_gantt_path %>
-    <%= button_to "New Project", '#'%>
+<div id="project_display">
+  <% if @projects.any? %>
+  <h1>Projects</h1>
+  <table id="projects_table">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Start Date</th>
+      <th>Creator</th>
+    </tr>
+    <% @projects.each do |project| %>
+    <tr>
+      <td><%= link_to project_path(project) do %><%= project.title %><% end %></td>
+      <td><%= project.description %></td>
+      <td><%= project.start_date%></td>
+      <td><%= User.find(project.user_id).name %></td>
+    </tr>
 
-  </div>
+    <% end %>
+  </table>
+  <% end %>
+
+</div>
+
+<div id="project_controls">
+  <%= link_to "Gantt Page", pages_gantt_path %>
+  <%= button_to "New Project", new_project_path, class: 'btn btn-primary', method: :get %>
+
+</div>
 <% end %>

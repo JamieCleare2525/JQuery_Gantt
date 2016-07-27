@@ -1,3 +1,24 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#project_display{
+  float:left;
+  width: 900px;
+}
+
+#project_controls{
+  float:left;
+  width: 200px;
+  margin:auto;
+  text-align: center;
+}
+
+#projects_table{
+  td, th{
+    width: 200px;
+    font-size: 15px;
+    padding: 10px;
+    border-bottom: solid #ff0000;
+  }
+}
