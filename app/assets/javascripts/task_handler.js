@@ -85,8 +85,8 @@ function taskAsBar(dateDiff, row_number){
   rect.setAttributeNS(null, 'id', 'task_bar'+row_number);
   rect.setAttributeNS(null, 'x', 34 * dateInc);
   rect.setAttributeNS(null, 'y', ((34 * (row_number-2))+53));
-  rect.setAttributeNS(null, 'height', '34');
-  rect.setAttributeNS(null, 'width', '34' * dateDiff);
+  rect.setAttributeNS(null, 'height', '35');
+  rect.setAttributeNS(null, 'width', '35' * dateDiff);
   rect.setAttributeNS(null, 'fill', color);
   document.getElementById('gantt_svg').appendChild(rect);
   //creates text to appear in the rect.
@@ -94,7 +94,7 @@ function taskAsBar(dateDiff, row_number){
   newText.setAttributeNS(null, 'id', 'bar_text'+row_number);
   newText.setAttributeNS(null, 'x', (34 * dateInc + (dateDiff*16)));
   newText.setAttributeNS(null, 'y', ((34*(row_number-2))+70));
-  newText.setAttributeNS(null, 'font-size', "13px");
+  newText.setAttributeNS(null, 'font-size', "10px");
   newText.setAttributeNS(null, 'text-anchor', "middle");
   newText.setAttributeNS(null, 'alignment-baseline', "middle");
   if (dateDiff == 0){

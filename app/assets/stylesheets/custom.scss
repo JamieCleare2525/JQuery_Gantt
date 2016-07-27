@@ -1,3 +1,9 @@
+@import "bootstrap";
+
+.field_with_errors { @extend .has-error; }
+.alert-notice { @extend .alert-info; }
+.alert-alert { @extend .alert-danger; }
+
 #table_area{
   width: 50%;
   float:left;
@@ -12,14 +18,23 @@ h1{
   text-align: center;
 }
 
+#task_table{
 td {
   width: 120px;
   text-align: center;
+  margin: auto;
   padding: 5px;
 }
 
+th{
+  text-align: center;
+}
+
 input{
-  width: 120px;
+  width: 100px;
+  height: 20px;
+  font-size: 10px;
+}
 }
 
 #gantt_svg{
