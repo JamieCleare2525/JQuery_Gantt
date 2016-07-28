@@ -2,8 +2,18 @@
   <h1>New Task</h1>
   <%= render 'task_form' %>
 </div>
-<div id="show_tasks">
+<div id="show_tasks" class="sortable">
   <h1>Tasks</h1>
+  <table class="task_display">
+    <tr>
+      <th>Task ID</th>
+      <th>Task Name</th>
+      <th>Start Date</th>
+      <th>Finish Date</th>
+      <th>Prerequisite</th>
+    </tr>
+  <%= render 'task_display' %>
+</table>
 </div>
 <div id="gantt_area">
 </div>

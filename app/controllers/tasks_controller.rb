@@ -1,16 +1,8 @@
 class TasksController < ApplicationController
-  def new
-    @task = Task.new
-  end
-
   def create
-    @task = Task.new(task_params)
-
-    if @task.save
-      redirect_to root_url
-    else
-      render 'new'
-    end
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.create(task_params)
+    redirect_to project_path(@project)
   end
 
   private

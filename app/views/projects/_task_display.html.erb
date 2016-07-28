@@ -1,0 +1,15 @@
+<% unless @project.tasks.empty? %>
+<% @project.tasks.each do |t|%>
+
+<div>
+    <tr>
+      <td><%= t.id %></td>
+      <td><%= t.name %></td>
+      <td><%= t.start_date %></td>
+      <td><%= t.finish_date %></td>
+      <td><%= t.prerequisite %></td>
+    </tr>
+</div>
+
+<% end %>
+<% end %>
