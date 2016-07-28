@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
     @project.user = current_user
 
     if @project.save
+      @task = @project.tasks.create(name: "Start", start_date: @project.start_date, task_number: 1)
       redirect_to root_url
     else
       render 'new'
