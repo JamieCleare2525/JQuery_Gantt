@@ -1,11 +1,15 @@
 $(document).on('turbolinks:load', function(){
+
   $(".toggle_display").click(function(){
-    //drawGantt();
+    var ganttVisible = $("#display_gantt").is(":visible");
     $("#create_tasks").toggle("slow");
     $("#display_new_task").toggle();
     $("#gantt_div").toggle("slow");
     $("#display_gantt").toggle();
-
+    //console.log(ganttVisible);
+    if(ganttVisible == true){
+      drawGantt();
+    }
   });
 });
 
@@ -72,27 +76,28 @@ function drawBar(dateDiff, row_number){
   }else{
     color = "#ff0000";
   }
+  --row_number;
   //creates the bars in the bar chart of the gantt
   //var dateInc = differenceFromStart(row_number);
   var svg_area = document.getElementById('gantt_display');
-  svg_area.style.height = (50 * row_number) + 'px';
+  svg_area.style.height = (68 * row_number) + 'px';
   var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
   rect.setAttributeNS(null, 'id', 'task_bar'+row_number);
   rect.setAttributeNS(null, 'x', 0);//34 * dateInc);
-  rect.setAttributeNS(null, 'y', ((34 * (row_number-2))+53));
-  rect.setAttributeNS(null, 'height', '35');
-  rect.setAttributeNS(null, 'width', '35' * dateDiff);
+  rect.setAttributeNS(null, 'y', ((44 * (row_number))+22));
+  rect.setAttributeNS(null, 'height', '45');
+  rect.setAttributeNS(null, 'width', '10' * dateDiff);
   rect.setAttributeNS(null, 'fill', color);
   document.getElementById('gantt_display').appendChild(rect);
   //creates text to appear in the rect.
   var newText = document.createElementNS("http://www.w3.org/2000/svg", "text");
   newText.setAttributeNS(null, 'id', 'bar_text'+row_number);
-  newText.setAttributeNS(null, 'x', 0);//(34 * dateInc + (dateDiff*16)));
-  newText.setAttributeNS(null, 'y', ((34*(row_number-2))+70));
+  newText.setAttributeNS(null, 'x', 20);//(34 * dateInc + (dateDiff*16)));
+  newText.setAttributeNS(null, 'y', ((44*(row_number-1))+80));
   newText.setAttributeNS(null, 'font-size', "10px");
   newText.setAttributeNS(null, 'text-anchor', "middle");
   newText.setAttributeNS(null, 'alignment-baseline', "middle");
-  if (dateDiff == 0){
+  if ((dateDiff == 0)||(isNaN(dateDiff))){
     newText.setAttributeNS(null, 'display', 'none');
   }
   var textNode = document.createTextNode(''+dateDiff+' days');
