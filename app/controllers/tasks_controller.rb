@@ -6,6 +6,15 @@ class TasksController < ApplicationController
     redirect_to project_path(@project)
   end
 
+  def update_task_number
+    @task = Task.find(params[:task][:task_id])
+    @task.task_number = params[:task][:task_number_position]
+    @task.save
+
+    render nothing: true
+  end
+
+
   private
 
   def task_params

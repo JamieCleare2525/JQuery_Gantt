@@ -5,6 +5,10 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0'
 # For user login
 gem 'devise'
+# For jquery
+gem 'jquery-ui-rails'
+# For drag and drop
+gem 'ranked-model'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

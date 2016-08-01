@@ -1,15 +1,13 @@
 <% unless @project.tasks.empty? %>
 <% @project.tasks.each do |t|%>
-
-<div>
-    <tr>
+  <% unless t.id.blank? %>
+    <tr data-item-id="<%= t.id %>" class="item">
       <td><%= t.task_number %></td>
       <td><%= t.name %></td>
       <td><%= t.start_date %></td>
       <td><%= t.finish_date %></td>
       <td><%= t.prerequisite %></td>
     </tr>
-</div>
-
+  <% end %>
 <% end %>
 <% end %>

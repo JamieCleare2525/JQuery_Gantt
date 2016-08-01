@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
     @task = Task.new
   end
 
+
   private
 
   def project_params

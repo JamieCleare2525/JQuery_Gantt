@@ -15,7 +15,7 @@
       <button id='display_gantt' class='toggle_display btn btn-primary'>Display Gantt</button>
     </div>
   </div>
-  <table class="task_display">
+  <table id="task_display" class='sortable'>
     <tr>
       <th>Task ID</th>
       <th>Task Name</th>
@@ -30,3 +30,6 @@
     <svg id="gantt_display">
     </svg>
 </div>
+
+
+  <p id="hidden_page_id"><%= @project.id%></p>

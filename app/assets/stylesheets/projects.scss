@@ -67,7 +67,7 @@
   height:80px;
 }
 
-.task_display{
+#task_display{
   margin-bottom: 10px;
   td, th{
     text-align: center;
@@ -85,4 +85,8 @@
   display: block;
   overflow-x: auto;
   background-color: #cccccc;
+}
+
+#hidden_page_id{
+  visibility: hidden;
 }
