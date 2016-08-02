@@ -91,8 +91,8 @@ function drawBar(dateDiff, row_number, dist_from_start){
   var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
   rect.setAttributeNS(null, 'id', 'task_bar'+row_number);
   rect.setAttributeNS(null, 'x', 10 * dist_from_start);
-  rect.setAttributeNS(null, 'y', ((44 * (row_number))+22));
-  rect.setAttributeNS(null, 'height', '45');
+  rect.setAttributeNS(null, 'y', ((50 * (row_number))+20));
+  rect.setAttributeNS(null, 'height', '50');
   rect.setAttributeNS(null, 'width', '10' * dateDiff);
   rect.setAttributeNS(null, 'fill', color);
   document.getElementById('gantt_display').appendChild(rect);
@@ -100,7 +100,7 @@ function drawBar(dateDiff, row_number, dist_from_start){
   var newText = document.createElementNS("http://www.w3.org/2000/svg", "text");
   newText.setAttributeNS(null, 'id', 'bar_text'+row_number);
   newText.setAttributeNS(null, 'x', 20 + (dist_from_start * 10));
-  newText.setAttributeNS(null, 'y', ((44*(row_number-1))+80));
+  newText.setAttributeNS(null, 'y', ((50*(row_number-1))+90));
   newText.setAttributeNS(null, 'font-size', "10px");
   newText.setAttributeNS(null, 'text-anchor', "middle");
   newText.setAttributeNS(null, 'alignment-baseline', "middle");

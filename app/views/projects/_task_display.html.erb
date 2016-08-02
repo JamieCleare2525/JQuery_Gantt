@@ -7,6 +7,9 @@
       <td><%= t.start_date %></td>
       <td><%= t.finish_date %></td>
       <td><%= t.prerequisite %></td>
+      <% if t.name != "Start"%>
+        <td><%= button_to "X", [t.project, t] ,method: :delete, class: 'task_delete btn btn-primary' %>
+      <% end%>
     </tr>
   <% end %>
 <% end %>

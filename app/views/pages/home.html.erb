@@ -11,14 +11,17 @@
       <th>Start Date</th>
       <th>Creator</th>
     </tr>
+
     <% @projects.each do |project| %>
+    <% if current_user.name == User.find(project.user_id).name %>
     <tr>
       <td><%= link_to project_path(project) do %><%= project.title %><% end %></td>
       <td><%= project.description %></td>
       <td><%= project.start_date%></td>
       <td><%= User.find(project.user_id).name %></td>
+      <td><%= button_to 'Delete', project_path(project), method: :delete, class: 'btn btn-primary' %></td>
     </tr>
-
+    <% end %>
     <% end %>
   </table>
   <% end %>
